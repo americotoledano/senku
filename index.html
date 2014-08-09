@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Senku</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script type="text/javascript" src="./zepto.min.js"></script>
+	<script type="text/javascript" src="./eurosenku.js"></script>
+</head>
+<body>
+	<svg height="100%" width="100%" viewBox="0 0 200 200">
+		<!--Horizontal lines-->
+		<line id="hor" x1="75" y1="25" x2="125" y2="25" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="75" y1="50" x2="125" y2="50" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="25" y1="75" x2="175" y2="75" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="25" y1="100" x2="175" y2="100" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="25" y1="125" x2="175" y2="125" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="75" y1="150" x2="125" y2="150" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="75" y1="175" x2="125" y2="175" style="stroke:Green;stroke-width:3"/>
+
+		<!--Vertical lines-->
+		<line id="hor" x1="25" y1="75" x2="25" y2="125" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="50" y1="75" x2="50" y2="125" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="75" y1="25" x2="75" y2="175" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="100" y1="25" x2="100" y2="175" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="125" y1="25" x2="125" y2="175" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="150" y1="75" x2="150" y2="125" style="stroke:Green;stroke-width:3"/>
+		<line id="hor" x1="175" y1="75" x2="175" y2="125" style="stroke:Green;stroke-width:3"/>
+
+		<!--Fichas-->
+		<circle id="f1" class="ficha" cx="75" cy="25" r="10" fill="Crimson" stroke="Crimson" stroke-width="2" style=""/>
+		<circle id="f2" class="ficha" cx="100" cy="25" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f3" class="ficha" cx="125" cy="25" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+
+		<!--<circle id="f4" class="ficha" cx="50" cy="50" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>-->
+		<circle id="f5" class="ficha" cx="75" cy="50" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f6" class="ficha" cx="100" cy="50" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f7" class="ficha" cx="125" cy="50" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<!--<circle id="f8" class="ficha" cx="150" cy="50" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>-->
+
+		<circle id="f9" class="ficha" cx="25" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f10" class="ficha" cx="50" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f11" class="ficha" cx="75" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f12" class="ficha" cx="100" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f13" class="ficha" cx="125" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f14" class="ficha" cx="150" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f15" class="ficha" cx="175" cy="75" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+
+		<circle id="f16" class="ficha" cx="25" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f17" class="ficha" cx="50" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f18" class="ficha" cx="75" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f0" class="ficha" cx="100" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2" style="fill-opacity:0;stroke-opacity:0"/>
+		<circle id="f19" class="ficha" cx="125" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f20" class="ficha" cx="150" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f21" class="ficha" cx="175" cy="100" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+
+		<circle id="f22" class="ficha" cx="25" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f23" class="ficha" cx="50" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f24" class="ficha" cx="75" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f25" class="ficha" cx="100" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f26" class="ficha" cx="125" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f27" class="ficha" cx="150" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f28" class="ficha" cx="175" cy="125" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+
+		<!--<circle id="f29" class="ficha" cx="50" cy="150" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>-->
+		<circle id="f30" class="ficha" cx="75" cy="150" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f31" class="ficha" cx="100" cy="150" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f32" class="ficha" cx="125" cy="150" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<!--<circle id="f33" class="ficha" cx="150" cy="150" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>-->
+
+		<circle id="f34" class="ficha" cx="75" cy="175" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f35" class="ficha" cx="100" cy="175" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+		<circle id="f36" class="ficha" cx="125" cy="175" r="10" fill="Crimson" stroke="Crimson" stroke-width="2"/>
+
+		<!--Menu-->
+		<rect id="cajaBoton" class="botonM" x="170" y="170" rx="4" ry="4" width="20" height="20" style="fill:green;stroke-width:1;stroke:rgb(0,0,0)" />
+		<circle id="engranajeBoton" class="botonM" cx="180" cy="180" r="5" fill="black" stroke="black" stroke-dasharray="2" stroke-width="2"/>
+		<circle id="engranajeVacioBoton" class="botonM" cx="180" cy="180" r="3" fill="green"/>
+		<rect id="menu" class="menuClass" x="0" y="0" width="0" height="0" fill="rgb(50,50,50)" style="fill-opacity:0;stroke-opacity:0"/>
+		<text id="reiniciar" class="menuClass" x="0" y="25" fill="white" style="fill-opacity:0;stroke-opacity:0"></text>
+		<text id="volverJuego" class="menuClass" x="20" y="180" fill="white" style="fill-opacity:0;stroke-opacity:0"></text>
+
+		<!--Chivatos-->
+		<!--<text id="chivato0" x="10" y="5" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato1" x="10" y="10" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato2" x="10" y="15" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato3" x="10" y="20" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato4" x="10" y="25" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato5" x="10" y="30" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato6" x="10" y="35" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato7" x="10" y="40" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato8" x="10" y="45" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato9" x="10" y="50" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato10" x="10" y="55" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato11" x="10" y="60" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato12" x="10" y="65" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato13" x="10" y="70" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato14" x="10" y="75" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato15" x="10" y="80" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato16" x="10" y="85" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato17" x="10" y="90" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato18" x="10" y="95" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato19" x="10" y="100" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato20" x="10" y="105" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato21" x="10" y="110" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato22" x="10" y="115" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato23" x="10" y="120" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato24" x="10" y="125" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato25" x="10" y="130" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato26" x="10" y="135" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato27" x="10" y="140" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato28" x="10" y="145" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato29" x="10" y="150" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato30" x="10" y="155" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato31" x="10" y="160" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato32" x="10" y="165" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato33" x="10" y="170" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato34" x="10" y="175" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato35" x="10" y="180" font-size="0.3em" style="fill:black;"></text>
+		<text id="chivato36" x="10" y="185" font-size="0.3em" style="fill:black;"></text>-->
+	</svg>
+</body>
+</html>
