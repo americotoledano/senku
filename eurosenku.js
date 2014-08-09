@@ -1,46 +1,42 @@
 $(function()
 {
-	var fichaJugadora; //La ficha que esté seleccionada
+	var fichaSeleccionada; //La ficha que esté seleccionada
 	var menuVisible = false;
 	var contFichas = 32;
-	var fichas = [
-		{id: "#f0", visible: 0, x: 4, y: 4},//Ficha central
-		{id: "#f1", visible: 1, x: 3, y: 1},//Primera fila
-		{id: "#f2", visible: 1, x: 4, y: 1},
-		{id: "#f3", visible: 1, x: 5, y: 1},
-		{id: "#f4", visible: 1, x: 2, y: 2},//Segunda fila
-		{id: "#f5", visible: 1, x: 3, y: 2},
-		{id: "#f6", visible: 1, x: 4, y: 2},
-		{id: "#f7", visible: 1, x: 5, y: 2},
-		{id: "#f8", visible: 1, x: 6, y: 2},
-		{id: "#f9", visible: 1, x: 1, y: 3},//Tercera fila
-		{id: "#f10", visible: 1, x: 2, y: 3},
-		{id: "#f11", visible: 1, x: 3, y: 3},
-		{id: "#f12", visible: 1, x: 4, y: 3},
-		{id: "#f13", visible: 1, x: 5, y: 3},
-		{id: "#f14", visible: 1, x: 6, y: 3},
-		{id: "#f15", visible: 1, x: 7, y: 3},
-		{id: "#f16", visible: 1, x: 1, y: 4},//Cuarta fila
-		{id: "#f17", visible: 1, x: 2, y: 4},
-		{id: "#f18", visible: 1, x: 3, y: 4},
-		{id: "#f19", visible: 1, x: 5, y: 4},
-		{id: "#f20", visible: 1, x: 6, y: 4},
-		{id: "#f21", visible: 1, x: 7, y: 4},
-		{id: "#f22", visible: 1, x: 1, y: 5},//Quinta fila
-		{id: "#f23", visible: 1, x: 2, y: 5},
-		{id: "#f24", visible: 1, x: 3, y: 5},
-		{id: "#f25", visible: 1, x: 4, y: 5},
-		{id: "#f26", visible: 1, x: 5, y: 5},
-		{id: "#f27", visible: 1, x: 6, y: 5},
-		{id: "#f28", visible: 1, x: 7, y: 5},
-		{id: "#f29", visible: 1, x: 2, y: 6},//Sexta fila
-		{id: "#f30", visible: 1, x: 3, y: 6},
-		{id: "#f31", visible: 1, x: 4, y: 6},
-		{id: "#f32", visible: 1, x: 5, y: 6},
-		{id: "#f33", visible: 1, x: 6, y: 6},
-		{id: "#f34", visible: 1, x: 3, y: 7},//Septima fila
-		{id: "#f35", visible: 1, x: 4, y: 7},
-		{id: "#f36", visible: 1, x: 5, y: 7}
+	var tablero = [
+		{id: "#f1", ficha: true, x: 3, y: 1},//Primera fila
+		{id: "#f2", ficha: true, x: 4, y: 1},
+		{id: "#f3", ficha: true, x: 5, y: 1},
+		{id: "#f4", ficha: true, x: 3, y: 2},//Segunda fila
+		{id: "#f5", ficha: true, x: 4, y: 2},
+		{id: "#f6", ficha: true, x: 5, y: 2},
+		{id: "#f7", ficha: true, x: 1, y: 3},//Tercera fila
+		{id: "#f8", ficha: true, x: 2, y: 3},
+		{id: "#f9", ficha: true, x: 3, y: 3},
+		{id: "#f10", ficha: true, x: 4, y: 3},
+		{id: "#f11", ficha: true, x: 5, y: 3},
+		{id: "#f12", ficha: true, x: 6, y: 3},
+		{id: "#f13", ficha: true, x: 7, y: 3},
+		{id: "#f14", ficha: true, x: 1, y: 4},//Cuarta fila
+		{id: "#f15", ficha: true, x: 2, y: 4},
+		{id: "#f16", ficha: true, x: 3, y: 4},
+		{id: "#f17", ficha: false, x: 4, y: 4},
+		{id: "#f18", ficha: true, x: 5, y: 4},
+		{id: "#f19", ficha: true, x: 6, y: 4},
+		{id: "#f20", ficha: true, x: 7, y: 4},
+		{id: "#f21", ficha: true, x: 1, y: 5},//Quinta fila
+		{id: "#f22", ficha: true, x: 2, y: 5},
+		{id: "#f23", ficha: true, x: 3, y: 5},
+		{id: "#f24", ficha: true, x: 4, y: 5},
+		{id: "#f25", ficha: true, x: 5, y: 5},
+		{id: "#f26", ficha: true, x: 6, y: 5},
+		{id: "#f27", ficha: true, x: 7, y: 5},
+		{id: "#f28", ficha: true, x: 3, y: 6},//Sexta fila
+		{id: "#f29", ficha: true, x: 4, y: 6},
+		{id: "#f30", ficha: true, x: 5, y: 6},
+		{id: "#f31", ficha: true, x: 3, y: 7},//Septima fila
+		{id: "#f32", ficha: true, x: 4, y: 7},
+		{id: "#f33", ficha: true, x: 5, y: 7},
 	];
 
 
@@ -52,12 +48,12 @@ $(function()
 		//Oculta ficha en interfaz
 		$(idCasilla).attr('style', 'fill-opacity:0;stroke-opacity:0');
 
-		//Oculta ficha en diccionario de fichas
-		for(var i=0; i<fichas.length; i++)
+		//Oculta ficha en diccionario de casillas (tablero)
+		for(var i=0; i<tablero.length; i++)
 		{
-			if(fichas[i].id === idCasilla)
+			if(tablero[i].id === idCasilla)
 			{
-				fichas[i].visible = 0;
+				tablero[i].ficha = false;
 			}
 		}
 	}
@@ -70,12 +66,12 @@ $(function()
 		//Muestra ficha en interfaz
 		$(idCasilla).attr('style', '');
 
-		//Muestra ficha en diccionario de fichas
-		for(var i=0; i<fichas.length; i++)
+		//Muestra ficha en diccionario de casillas (tablero)
+		for(var i=0; i<tablero.length; i++)
 		{
-			if(fichas[i].id === idCasilla)
+			if(tablero[i].id === idCasilla)
 			{
-				fichas[i].visible = 1;
+				tablero[i].ficha = true;
 			}
 		}
 	}
@@ -86,13 +82,13 @@ $(function()
 	function seleccionaFicha( idCasilla )
 	{
 		//Si ya hay una ficha seleccionada
-		if(fichaJugadora != undefined)
+		if(fichaSeleccionada != undefined)
 		{
-			deseleccionaFicha(fichaJugadora);
+			deseleccionaFicha(fichaSeleccionada);
 		}
 
 		$(idCasilla).attr('stroke', 'Black');
-		fichaJugadora = idCasilla;
+		fichaSeleccionada = idCasilla;
 	}
 
 	/***********************************************
@@ -103,16 +99,19 @@ $(function()
 		$(idCasilla).attr('stroke', 'Crimson');
 	}
 
-	function logicaFichas ( idFicha )
+	/***********************************************
+	** Recibe el id de una casilla vacía en la que se ha hecho click, estando la ficha seleccionada en fichaSeleccionada
+	***********************************************/
+	function logicaFichas ( idCasilla )
 	{
-		var clavija = {};
-		var miFicha = {};
-		var fichaComida = {};
+		var clavija = {}; //Almacena coordenadas de la casilla vacía
+		var miFicha = {}; //Almacena coordenadas de la casilla con la ficha seleccionada
+		var fichaComida = {}; //Almacena coordenadas de la casilla con la posible ficha a comer
 
-		clavija.x = fichas[ idFicha.substring( 2,idFicha.length ) ].x;
-		clavija.y = fichas[ idFicha.substring( 2,idFicha.length ) ].y;
-		miFicha.x = fichas[ fichaJugadora.substring( 2,fichaJugadora.length ) ].x;
-		miFicha.y = fichas[ fichaJugadora.substring( 2,fichaJugadora.length ) ].y;
+		clavija.x = tablero[ idCasilla.substring( 2,idCasilla.length ) - 1 ].x;
+		clavija.y = tablero[ idCasilla.substring( 2,idCasilla.length ) - 1 ].y;
+		miFicha.x = tablero[ fichaSeleccionada.substring( 2,fichaSeleccionada.length ) - 1 ].x;
+		miFicha.y = tablero[ fichaSeleccionada.substring( 2,fichaSeleccionada.length ) - 1 ].y;
 
 		//Se juega en el eje x
 		if( miFicha.y === clavija.y )
@@ -125,16 +124,16 @@ $(function()
 				fichaComida.y = miFicha.y;
 				//alert(fichaComida.x + ":" + fichaComida.y);
 
-				for(var i = 0; i<fichas.length; i++)
+				for(var i = 0; i<tablero.length; i++)
 				{
-					if(fichas[i].x === fichaComida.x && fichas[i].y === fichaComida.y)
+					if(tablero[i].x === fichaComida.x && tablero[i].y === fichaComida.y)
 					{
 						//Si hay para comer
-						if( fichas[i].visible === 1 )
+						if( tablero[i].ficha === true )
 						{
-							ocultaFicha(fichas[i].id); //Ocultar ficha comida
-							ocultaFicha(fichaJugadora); //Ocultar ficha seleccionada
-							muestraFicha(idFicha); //Mostrar ficha en espacio
+							ocultaFicha(tablero[i].id); //Ocultar ficha comida
+							ocultaFicha(fichaSeleccionada); //Ocultar ficha seleccionada
+							muestraFicha(idCasilla); //Mostrar ficha en casilla vacía
 							contFichas --;//Decrementar contador fichas
 							estadoPartida(); //Comprobamos estado partida
 						}
@@ -154,16 +153,16 @@ $(function()
 				fichaComida.y = Math.max(miFicha.y, clavija.y) - 1;
 				fichaComida.x = miFicha.x;
 
-				for(var i = 0; i<fichas.length; i++)
+				for(var i = 0; i<tablero.length; i++)
 				{
-					if(fichas[i].x === fichaComida.x && fichas[i].y === fichaComida.y)
+					if(tablero[i].x === fichaComida.x && tablero[i].y === fichaComida.y)
 					{
 						//Si hay para comer
-						if( fichas[i].visible === 1 )
+						if( tablero[i].ficha === true )
 						{
-							ocultaFicha(fichas[i].id); //Ocultar ficha comida
-							ocultaFicha(fichaJugadora); //Ocultar ficha seleccionada
-							muestraFicha(idFicha); //Mostrar ficha en espacio
+							ocultaFicha(tablero[i].id); //Ocultar ficha comida
+							ocultaFicha(fichaSeleccionada); //Ocultar ficha seleccionada
+							muestraFicha(idCasilla); //Mostrar ficha en casilla vacía
 							contFichas --; //Decrementar contador fichas
 							estadoPartida(); //Comprobamos estado partida
 						}
@@ -176,13 +175,13 @@ $(function()
 	/*********************************************************
 	** Maneja lo que ocurre al hacer click sobre una casilla
 	*********************************************************/
-	function clickFicha( idCasilla )
+	function clickCasilla( idCasilla )
 	{
 		//Click en un espacio vacío
 		if( $(idCasilla).attr('style') === 'fill-opacity:0;stroke-opacity:0' )
 		{
 			//Si hay una ficha seleccionada
-			if(fichaJugadora != undefined)
+			if(fichaSeleccionada != undefined)
 			{
 				logicaFichas(idCasilla);
 			}
@@ -215,42 +214,42 @@ $(function()
 		{
 			//Ver si hay tres espacios consecutivos y en una misma fila o columna,
 			//teniendo dos fichas juntas y un espacio vacío
-			for(var i=0; i<fichas.length; i++)
+			for(var i=0; i<tablero.length; i++)
 			{
-				for(var j=0; j<fichas.length; j++)
+				for(var j=0; j<tablero.length; j++)
 				{
-					for(var k=0; k<fichas.length; k++)
+					for(var k=0; k<tablero.length; k++)
 					{
 						// En la misma fila
-						if((fichas[i].y == fichas[j].y == fichas[k].y) && !movimientosPosibles)
+						if((tablero[i].y == tablero[j].y == tablero[k].y) && !movimientosPosibles)
 						{
 							//Consecutivas
-							if( fichas[i].x == (fichas[j].x - 1) == (fichas[k].x - 2) )
+							if( tablero[i].x == (tablero[j].x - 1) == (tablero[k].x - 2) )
 							{	
 								//Dos fichas consecutivas y un espacio vacío
-								if( ((fichas[i].visible == 1)
-										&& (fichas[j].visible == 1)
-										&& (fichas[k].visible == 0))
-									|| ((fichas[i].visible == 0)
-										&& (fichas[j].visible == 1)
-										&& (fichas[k].visible == 1))
+								if( ((tablero[i].ficha == true)
+										&& (tablero[j].ficha == true)
+										&& (tablero[k].ficha == false))
+									|| ((tablero[i].ficha == false)
+										&& (tablero[j].ficha == true)
+										&& (tablero[k].ficha == true))
 								)
 									movimientosPosibles = true;
 							}
 						}
 						// En la misma columna
-						else if((fichas[i].x == fichas[j].x == fichas[k].x) && !movimientosPosibles)
+						else if((tablero[i].x == tablero[j].x == tablero[k].x) && !movimientosPosibles)
 						{
 							//Consecutivas
-							if( fichas[i].y == (fichas[j].y - 1) == (fichas[k].y - 2) )
+							if( tablero[i].y == (tablero[j].y - 1) == (tablero[k].y - 2) )
 							{	
 								//Dos fichas consecutivas y un espacio vacío
-								if( ((fichas[i].visible == 1)
-										&& (fichas[j].visible == 1)
-										&& (fichas[k].visible == 0))
-									|| ((fichas[i].visible == 0)
-										&& (fichas[j].visible == 1)
-										&& (fichas[k].visible == 1))
+								if( ((tablero[i].ficha == true)
+										&& (tablero[j].ficha == true)
+										&& (tablero[k].ficha == false))
+									|| ((tablero[i].ficha == false)
+										&& (tablero[j].ficha == true)
+										&& (tablero[k].ficha == true))
 								)
 									movimientosPosibles = true;
 							}
@@ -297,10 +296,10 @@ $(function()
 	{
 		var nombreID = "#chivato";
 
-		for(var i=0; i<fichas.length; i++)
+		for(var i=0; i<tablero.length; i++)
 		{
 			nombreID = "" + nombreID + i;
-			$(nombreID).html(fichas[i].id + ': ' + fichas[i].visible);
+			$(nombreID).html(tablero[i].id + ': ' + tablero[i].visible);
 			nombreID = "#chivato";
 		}
 	}
@@ -338,55 +337,50 @@ $(function()
 	***********************/
 	function reiniciaPartida()
 	{
-		fichas = [
-			{id: "#f0", visible: 0, x: 4, y: 4},//Ficha central
-			{id: "#f1", visible: 1, x: 3, y: 1},//Primera fila
-			{id: "#f2", visible: 1, x: 4, y: 1},
-			{id: "#f3", visible: 1, x: 5, y: 1},
-			{id: "#f4", visible: 1, x: 2, y: 2},//Segunda fila
-			{id: "#f5", visible: 1, x: 3, y: 2},
-			{id: "#f6", visible: 1, x: 4, y: 2},
-			{id: "#f7", visible: 1, x: 5, y: 2},
-			{id: "#f8", visible: 1, x: 6, y: 2},
-			{id: "#f9", visible: 1, x: 1, y: 3},//Tercera fila
-			{id: "#f10", visible: 1, x: 2, y: 3},
-			{id: "#f11", visible: 1, x: 3, y: 3},
-			{id: "#f12", visible: 1, x: 4, y: 3},
-			{id: "#f13", visible: 1, x: 5, y: 3},
-			{id: "#f14", visible: 1, x: 6, y: 3},
-			{id: "#f15", visible: 1, x: 7, y: 3},
-			{id: "#f16", visible: 1, x: 1, y: 4},//Cuarta fila
-			{id: "#f17", visible: 1, x: 2, y: 4},
-			{id: "#f18", visible: 1, x: 3, y: 4},
-			{id: "#f19", visible: 1, x: 5, y: 4},
-			{id: "#f20", visible: 1, x: 6, y: 4},
-			{id: "#f21", visible: 1, x: 7, y: 4},
-			{id: "#f22", visible: 1, x: 1, y: 5},//Quinta fila
-			{id: "#f23", visible: 1, x: 2, y: 5},
-			{id: "#f24", visible: 1, x: 3, y: 5},
-			{id: "#f25", visible: 1, x: 4, y: 5},
-			{id: "#f26", visible: 1, x: 5, y: 5},
-			{id: "#f27", visible: 1, x: 6, y: 5},
-			{id: "#f28", visible: 1, x: 7, y: 5},
-			{id: "#f29", visible: 1, x: 2, y: 6},//Sexta fila
-			{id: "#f30", visible: 1, x: 3, y: 6},
-			{id: "#f31", visible: 1, x: 4, y: 6},
-			{id: "#f32", visible: 1, x: 5, y: 6},
-			{id: "#f33", visible: 1, x: 6, y: 6},
-			{id: "#f34", visible: 1, x: 3, y: 7},//Septima fila
-			{id: "#f35", visible: 1, x: 4, y: 7},
-			{id: "#f36", visible: 1, x: 5, y: 7}
+		tablero = [
+			{id: "#f1", ficha: true, x: 3, y: 1},//Primera fila
+			{id: "#f2", ficha: true, x: 4, y: 1},
+			{id: "#f3", ficha: true, x: 5, y: 1},
+			{id: "#f4", ficha: true, x: 3, y: 2},//Segunda fila
+			{id: "#f5", ficha: true, x: 4, y: 2},
+			{id: "#f6", ficha: true, x: 5, y: 2},
+			{id: "#f7", ficha: true, x: 1, y: 3},//Tercera fila
+			{id: "#f8", ficha: true, x: 2, y: 3},
+			{id: "#f9", ficha: true, x: 3, y: 3},
+			{id: "#f10", ficha: true, x: 4, y: 3},
+			{id: "#f11", ficha: true, x: 5, y: 3},
+			{id: "#f12", ficha: true, x: 6, y: 3},
+			{id: "#f13", ficha: true, x: 7, y: 3},
+			{id: "#f14", ficha: true, x: 1, y: 4},//Cuarta fila
+			{id: "#f15", ficha: true, x: 2, y: 4},
+			{id: "#f16", ficha: true, x: 3, y: 4},
+			{id: "#f17", ficha: false, x: 4, y: 4},
+			{id: "#f18", ficha: true, x: 5, y: 4},
+			{id: "#f19", ficha: true, x: 6, y: 4},
+			{id: "#f20", ficha: true, x: 7, y: 4},
+			{id: "#f21", ficha: true, x: 1, y: 5},//Quinta fila
+			{id: "#f22", ficha: true, x: 2, y: 5},
+			{id: "#f23", ficha: true, x: 3, y: 5},
+			{id: "#f24", ficha: true, x: 4, y: 5},
+			{id: "#f25", ficha: true, x: 5, y: 5},
+			{id: "#f26", ficha: true, x: 6, y: 5},
+			{id: "#f27", ficha: true, x: 7, y: 5},
+			{id: "#f28", ficha: true, x: 3, y: 6},//Sexta fila
+			{id: "#f29", ficha: true, x: 4, y: 6},
+			{id: "#f30", ficha: true, x: 5, y: 6},
+			{id: "#f31", ficha: true, x: 3, y: 7},//Septima fila
+			{id: "#f32", ficha: true, x: 4, y: 7},
+			{id: "#f33", ficha: true, x: 5, y: 7},
 		];
 
-		deseleccionaFicha(fichaJugadora);
+		deseleccionaFicha(fichaSeleccionada);
 		muestraFicha(".ficha");
-		ocultaFicha("#f0");
+		ocultaFicha("#f17");
 		contFichas = 32;
-		fichaJugadora = undefined;
+		fichaSeleccionada = undefined;
 
 		changeMenu();
 	}
-
 
 	/**********************
 	** Manejo de eventos
@@ -396,42 +390,38 @@ $(function()
 	$("#volverJuego").on('click', changeMenu);
 
 
-	$("#f1").on('click', function(){clickFicha("#f1");});
-	$("#f2").on('click', function(){clickFicha("#f2");});
-	$("#f3").on('click', function(){clickFicha("#f3");});
-	//$("#f4").on('click', function(){clickFicha("#f4");});
-	$("#f5").on('click', function(){clickFicha("#f5");});
-	$("#f6").on('click', function(){clickFicha("#f6");});
-	$("#f7").on('click', function(){clickFicha("#f7");});
-	//$("#f8").on('click', function(){clickFicha("#f8");});
-	$("#f9").on('click', function(){clickFicha("#f9");});
-	$("#f10").on('click', function(){clickFicha("#f10");});
-	$("#f11").on('click', function(){clickFicha("#f11");});
-	$("#f12").on('click', function(){clickFicha("#f12");});
-	$("#f13").on('click', function(){clickFicha("#f13");});
-	$("#f14").on('click', function(){clickFicha("#f14");});
-	$("#f15").on('click', function(){clickFicha("#f15");});
-	$("#f16").on('click', function(){clickFicha("#f16");});
-	$("#f17").on('click', function(){clickFicha("#f17");});
-	$("#f18").on('click', function(){clickFicha("#f18");});
-	$("#f19").on('click', function(){clickFicha("#f19");});
-	$("#f20").on('click', function(){clickFicha("#f20");});
-	$("#f21").on('click', function(){clickFicha("#f21");});
-	$("#f22").on('click', function(){clickFicha("#f22");});
-	$("#f23").on('click', function(){clickFicha("#f23");});
-	$("#f24").on('click', function(){clickFicha("#f24");});
-	$("#f25").on('click', function(){clickFicha("#f25");});
-	$("#f26").on('click', function(){clickFicha("#f26");});
-	$("#f27").on('click', function(){clickFicha("#f27");});
-	$("#f28").on('click', function(){clickFicha("#f28");});
-	//$("#f29").on('click', function(){clickFicha("#f29");});
-	$("#f30").on('click', function(){clickFicha("#f30");});
-	$("#f31").on('click', function(){clickFicha("#f31");});
-	$("#f32").on('click', function(){clickFicha("#f32");});
-	//$("#f33").on('click', function(){clickFicha("#f33");});
-	$("#f34").on('click', function(){clickFicha("#f34");});
-	$("#f35").on('click', function(){clickFicha("#f35");});
-	$("#f36").on('click', function(){clickFicha("#f36");});
-	$("#f0").on('click', function(){clickFicha("#f0");}); //Ficha central
+	$("#f1").on('click', function(){clickCasilla("#f1");});
+	$("#f2").on('click', function(){clickCasilla("#f2");});
+	$("#f3").on('click', function(){clickCasilla("#f3");});
+	$("#f4").on('click', function(){clickCasilla("#f4");});
+	$("#f5").on('click', function(){clickCasilla("#f5");});
+	$("#f6").on('click', function(){clickCasilla("#f6");});
+	$("#f7").on('click', function(){clickCasilla("#f7");});
+	$("#f8").on('click', function(){clickCasilla("#f8");});
+	$("#f9").on('click', function(){clickCasilla("#f9");});
+	$("#f10").on('click', function(){clickCasilla("#f10");});
+	$("#f11").on('click', function(){clickCasilla("#f11");});
+	$("#f12").on('click', function(){clickCasilla("#f12");});
+	$("#f13").on('click', function(){clickCasilla("#f13");});
+	$("#f14").on('click', function(){clickCasilla("#f14");});
+	$("#f15").on('click', function(){clickCasilla("#f15");});
+	$("#f16").on('click', function(){clickCasilla("#f16");});
+	$("#f17").on('click', function(){clickCasilla("#f17");});
+	$("#f18").on('click', function(){clickCasilla("#f18");});
+	$("#f19").on('click', function(){clickCasilla("#f19");});
+	$("#f20").on('click', function(){clickCasilla("#f20");});
+	$("#f21").on('click', function(){clickCasilla("#f21");});
+	$("#f22").on('click', function(){clickCasilla("#f22");});
+	$("#f23").on('click', function(){clickCasilla("#f23");});
+	$("#f24").on('click', function(){clickCasilla("#f24");});
+	$("#f25").on('click', function(){clickCasilla("#f25");});
+	$("#f26").on('click', function(){clickCasilla("#f26");});
+	$("#f27").on('click', function(){clickCasilla("#f27");});
+	$("#f28").on('click', function(){clickCasilla("#f28");});
+	$("#f29").on('click', function(){clickCasilla("#f29");});
+	$("#f30").on('click', function(){clickCasilla("#f30");});
+	$("#f31").on('click', function(){clickCasilla("#f31");});
+	$("#f32").on('click', function(){clickCasilla("#f32");});
+	$("#f33").on('click', function(){clickCasilla("#f33");});
 })
 
