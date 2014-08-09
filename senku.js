@@ -200,94 +200,109 @@ $(function()
 	{
 		var movimientosPosibles = false;
 		var tempMovs;
+		var iter = 0;
 
 		//Si el juego está ganado
 		if(contFichas == 1)
 		{
-			if( confirm('¡Ha ganado el juego! ¿Desea reiniciar la partida?') )
-			{
-				reiniciaPartida();
-			}
+			alert('¡Ha ganado el juego! ¿Desea reiniciar la partida?');
+			changeMenu();
 		}
 		//Si el juego no está ganado
 		else
 		{
-			//Ver si hay tres espacios consecutivos y en una misma fila o columna,
-			//teniendo dos fichas juntas y un espacio vacío
-			for(var i=0; i<tablero.length; i++)
+			while( (iter < tablero.length) && (!movimientosPosibles) )
 			{
-				for(var j=0; j<tablero.length; j++)
+				//Si hay una ficha en esa casilla del tablero
+				if(tablero[iter].ficha)
 				{
-					for(var k=0; k<tablero.length; k++)
+					//Comprobar si puede haber movimiento hacia la izquierda
+					if(iter+1==3 || iter+1==6 || iter+1==9 || iter+1==10 || iter+1==11 || iter+1==12 || iter+1==13 || iter+1==16 || iter+1==17 || iter+1==18 || iter+1==19 || iter+1==20 || iter+1==23 || iter+1==24 || iter+1==25 || iter+1==26 || iter+1==27 || iter+1==30 || iter+1==33)
 					{
-						// En la misma fila
-						if((tablero[i].y == tablero[j].y == tablero[k].y) && !movimientosPosibles)
-						{
-							//Consecutivas
-							if( tablero[i].x == (tablero[j].x - 1) == (tablero[k].x - 2) )
-							{	
-								//Dos fichas consecutivas y un espacio vacío
-								if( ((tablero[i].ficha == true)
-										&& (tablero[j].ficha == true)
-										&& (tablero[k].ficha == false))
-									|| ((tablero[i].ficha == false)
-										&& (tablero[j].ficha == true)
-										&& (tablero[k].ficha == true))
-								)
-									movimientosPosibles = true;
-							}
-						}
-						// En la misma columna
-						else if((tablero[i].x == tablero[j].x == tablero[k].x) && !movimientosPosibles)
-						{
-							//Consecutivas
-							if( tablero[i].y == (tablero[j].y - 1) == (tablero[k].y - 2) )
-							{	
-								//Dos fichas consecutivas y un espacio vacío
-								if( ((tablero[i].ficha == true)
-										&& (tablero[j].ficha == true)
-										&& (tablero[k].ficha == false))
-									|| ((tablero[i].ficha == false)
-										&& (tablero[j].ficha == true)
-										&& (tablero[k].ficha == true))
-								)
-									movimientosPosibles = true;
-							}
-						}
-
-						if(movimientosPosibles)
-						{
-							//alert("caquita");
-							break;
-						}
+						if( tablero[iter-1].ficha && !tablero[iter-2].ficha)
+							movimientosPosibles = true;
 					}
 
-					if(movimientosPosibles)
+					//Comprobar si puede haber movimiento hacia la derecha
+					if(iter+1==1 || iter+1==4 || iter+1==7 || iter+1==8 || iter+1==9 || iter+1==10 || iter+1==11 || iter+1==14 || iter+1==15 || iter+1==16 || iter+1==17 || iter+1==18 || iter+1==21 || iter+1==22 || iter+1==23 || iter+1==24 || iter+1==25 || iter+1==28 || iter+1==31)
 					{
-						//alert("caquita");
-						break;
+						if( tablero[iter+1].ficha && !tablero[iter+2].ficha)
+							movimientosPosibles = true;
+					}
 
+					//Comprobar si puede haber movimiento hacia abajo
+					//Caso 1 (fila 3)
+					if(iter+1==7 || iter+1==8 || iter+1==9 || iter+1==10 || iter+1==11 || iter+1==12 || iter+1==13)
+					{
+						if( tablero[iter+7].ficha && !tablero[iter+14].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 2 (fila 1)
+					if(iter+1==1 || iter+1==2 || iter+1==3)
+					{
+						if( tablero[iter+3].ficha && !tablero[iter+8].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 3 (fila 2)
+					if(iter+1==4 || iter+1==5 || iter+1==6)
+					{
+						if( tablero[iter+5].ficha && !tablero[iter+12].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 4 (fila 4)
+					if(iter+1==16 || iter+1==17 || iter+1==18)
+					{
+						if( tablero[iter+7].ficha && !tablero[iter+12].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 5 (fila 5)
+					if(iter+1==23 || iter+1==24 || iter+1==25)
+					{
+						if( tablero[iter+5].ficha && !tablero[iter+8].ficha )
+							movimientosPosibles = true;
+					}
+
+					//Comprobar si puede haber movimiento hacia arriba
+					//Caso 1 (fila 5)
+					if(iter+1==21 || iter+1==22 || iter+1==23 || iter+1==24 || iter+1==25 || iter+1==26 || iter+1==27)
+					{
+						if( tablero[iter-7].ficha && !tablero[iter-14].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 2 (fila 3)
+					if(iter+1==9 || iter+1==10 || iter+1==11)
+					{
+						if( tablero[iter-5].ficha && !tablero[iter-8].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 3 (fila 4)
+					if(iter+1==16 || iter+1==17 || iter+1==18)
+					{
+						if( tablero[iter-7].ficha && !tablero[iter-12].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 4 (fila 6)
+					if(iter+1==28 || iter+1==29 || iter+1==30)
+					{
+						if( tablero[iter-5].ficha && !tablero[iter-12].ficha )
+							movimientosPosibles = true;
+					}
+					//Caso 5 (fila 7)
+					if(iter+1==31 || iter+1==32 || iter+1==33)
+					{
+						if( tablero[iter-3].ficha && !tablero[iter-8].ficha )
+							movimientosPosibles = true;
 					}
 				}
-
-				if(movimientosPosibles)
-				{
-						//alert("caquita");
-						break;
-				}
+				iter++;
 			}
+
 
 			if(!movimientosPosibles)
 			{
-				if( confirm('Sin movimientos posibles. ¿Desea reiniciar la partida?') )
-				{
-					reiniciaPartida();
-				}
+				alert("Sin movimientos posibles.");
+				changeMenu();
 			}
-			/*else
-			{
-				alert("Movimiento" +i+","+j+","+k);
-			}*/
 		}
 	}
 
