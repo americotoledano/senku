@@ -11,3 +11,51 @@ body
 	background: rgba(134,174,204,1);
 	background: linear-gradient(to bottom, rgba(134,174,204,1) 0%, rgba(212,228,239,1) 100%);
 }
+
+.ficha
+{
+	fill: Crimson;
+	stroke: Crimson;
+	stroke-width: 2;
+}
+
+/*.ficha:hover
+{
+	fill: #D65D75;
+}*/
+
+.fichaSeleccionada
+{
+	fill: Crimson;
+	stroke: black;
+	stroke-width: 2;
+}
+
+.casilla
+{
+	fill-opacity: 0;
+	stroke-opacity: 0;
+}
+
+.tablero
+{
+	stroke: green;
+	stroke-width: 3;
+}
+
+#cajaBoton
+{
+	 fill: green;
+	 stroke: rgb(0,0,0);
+	 stroke-width: 1;
+}
+
+#reiniciar, #volverJuego
+{
+	fill: white;
+}
+
+#reiniciar:hover, #volverJuego:hover
+{
+	fill: yellow;
+}

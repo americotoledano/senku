@@ -46,7 +46,7 @@ $(function()
 	function ocultaFicha( idCasilla )
 	{
 		//Oculta ficha en interfaz
-		$(idCasilla).attr('style', 'fill-opacity:0;stroke-opacity:0');
+		$(idCasilla).attr('class', 'casilla');
 
 		//Oculta ficha en diccionario de casillas (tablero)
 		for(var i=0; i<tablero.length; i++)
@@ -64,7 +64,7 @@ $(function()
 	function muestraFicha( idCasilla )
 	{
 		//Muestra ficha en interfaz
-		$(idCasilla).attr('style', '');
+		$(idCasilla).attr('class', 'ficha');
 
 		//Muestra ficha en diccionario de casillas (tablero)
 		for(var i=0; i<tablero.length; i++)
@@ -87,7 +87,7 @@ $(function()
 			deseleccionaFicha(fichaSeleccionada);
 		}
 
-		$(idCasilla).attr('stroke', 'Black');
+		$(idCasilla).attr('class', 'fichaSeleccionada');
 		fichaSeleccionada = idCasilla;
 	}
 
@@ -96,7 +96,9 @@ $(function()
 	***********************************************/
 	function deseleccionaFicha( idCasilla )
 	{
-		$(idCasilla).attr('stroke', 'Crimson');
+		//Si la ficha existe todavia
+		if( $(fichaSeleccionada).attr('class') === 'fichaSeleccionada' )
+			$(idCasilla).attr('class', 'ficha');
 	}
 
 	/***********************************************
@@ -178,7 +180,7 @@ $(function()
 	function clickCasilla( idCasilla )
 	{
 		//Click en un espacio vacío
-		if( $(idCasilla).attr('style') === 'fill-opacity:0;stroke-opacity:0' )
+		if( $(idCasilla).attr('class') === 'casilla' )
 		{
 			//Si hay una ficha seleccionada
 			if(fichaSeleccionada != undefined)
@@ -327,6 +329,7 @@ $(function()
 	***************************/
 	function changeMenu()
 	{
+		//Si el menu esta visible se oculta
 		if(menuVisible)
 		{
 			$(".menuClass").attr("style", "fill-opacity:0;stroke-opacity:0");
@@ -336,6 +339,7 @@ $(function()
 			$("#volverJuego").html("");
 			menuVisible = false;
 		}
+		//Si el menu esta oculto se muestra
 		else
 		{
 			$(".menuClass").attr("style", "");
@@ -389,8 +393,16 @@ $(function()
 		];
 
 		deseleccionaFicha(fichaSeleccionada);
-		muestraFicha(".ficha");
-		ocultaFicha("#f17");
+
+		for(var i=0; i<tablero.length; i++)
+		{
+			//$(tablero[i].id).attr('class', 'ficha');
+			if(i == 16)
+				ocultaFicha( tablero[i].id );
+			else
+				muestraFicha( tablero[i].id );
+		}
+
 		contFichas = 32;
 		fichaSeleccionada = undefined;
 
