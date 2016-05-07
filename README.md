@@ -9,4 +9,4 @@ It is made in HTML5, CSS3 and JavaScript.
 
 Screenshot
 --------------
-![Screenshot](https://lh3.googleusercontent.com/-w0Z9HUW3vBM/U-eG-M085nI/AAAAAAAABT4/-9zq3Pe0qbA/w613-h583-no/Captura%2Bde%2Bpantalla%2Bde%2B2014-08-10%2B16%3A50%3A19.png "Screenshot")
+![Screenshot](https://75ffe6219e18443fc95e953885e78eedcf68e0f1.googledrive.com/host/0B5c6O0MFcCzRbkJMdW1QUm55dG8/senku-screenshot.png "Screenshot")
