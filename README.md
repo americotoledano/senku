@@ -4,7 +4,7 @@ A peg solitaire game for any web browser.
 
 It is made in HTML5, CSS3 and JavaScript.
 
-[Play it here!](http://erictol.github.io/senku/)
+[Play it here!](http://americotoledano.github.io/senku/)
 
 
 Screenshot
